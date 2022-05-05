@@ -1,0 +1,18 @@
+<h2>Course Details</h2>
+
+<hr/>
+<div *ngIf="course">
+  <div>
+    <label><b>Course Title: </b></label> {{course.name}}
+  </div>
+  <div>
+    <label><b>Seats: </b></label> {{course.seats}}
+  </div>
+  <div>
+    <label><b>Author: </b></label> {{course.author}}
+  </div>
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to Courses List</button><br>

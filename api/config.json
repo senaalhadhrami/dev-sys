@@ -1,0 +1,5 @@
+{
+    "secret": "SzTE 2021  <<<< ^^^^ >>>>>",
+    "origin": "http://localhost:4200",
+    "db" :"mongodb+srv://admin:admin@auchandb.xpcoh.mongodb.net/auchandb?retryWrites=true&w=majority"
+}

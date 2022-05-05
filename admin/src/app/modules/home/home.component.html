@@ -1,0 +1,35 @@
+<section fxLayout="column" fxFlexAlign="stretch">
+    <div fxFlexAlign="center">
+        <p *ngIf="userActive=='yes'">Welcome to fake Neptun Administration</p>
+        <h4 *ngIf="userActive=='no'">Your account is not active yet, please contact your administrator</h4>
+    </div>
+
+    <p matBadge="{{audits && audits.length}}" matBadgeOverlap="false" matBadgeColor="accent">Recent Updates:</p>
+    <mat-tab-group *ngIf="userActive == 'yes'" (selectedTabChange)="executeSelectedChange($event)">
+        <mat-tab label="Notifications">
+          <p *ngIf='audits && audits.length <1'>important notifications will be available here.</p>
+          <table *ngIf="userIsAuthenticated" mat-table [dataSource]="audits" class="mat-elevation-z8">
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+          <!-- Message Column -->
+          <ng-container matColumnDef="message" >
+            <th mat-header-cell *matHeaderCellDef> Message </th>
+            <td mat-cell role="gridcell" [style.background-color]="flagColor(element.action)"  *matCellDef="let element"> {{element.message}} </td>
+          </ng-container>
+
+          <!-- Created At Column -->
+          <ng-container matColumnDef="createdAt">
+            <th mat-header-cell *matHeaderCellDef> Date </th>
+            <td mat-cell *matCellDef="let element"><mat-icon>alarm</mat-icon>{{element.createdAt | date:'medium'}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        </mat-tab>
+        <mat-tab label="University News">
+           <p>latest news will be posted here.</p>
+          </mat-tab>
+      </mat-tab-group>
+</section>

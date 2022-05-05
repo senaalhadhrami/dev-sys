@@ -1,0 +1,38 @@
+<mat-toolbar [color]="userRole =='teacher'?'accent':'primary'">
+    <div fxHide.gt-xs>
+        <button mat-icon-button (click)="onToggleSidenav()">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </div>
+    <div>
+        <a routerLink="/">Fake Neptun </a> <a *ngIf="userIsAuthenticated" >({{userRole}}) </a>
+    </div>
+     <div *ngIf="userIsAuthenticated"  fxFlex fxLayout fxLayoutAlign="center" fxHide.xs>
+       <a *ngIf="userActive == 'yes'"  mat-button routerLink="/profile" routerLinkActive="active">
+       <mat-icon>face</mat-icon><span class="nav-caption large"> Profile</span>
+       </a>
+       <a *ngIf="userActive == 'yes'"  mat-button routerLink="/mycourses" routerLinkActive="active">
+       <mat-icon>subject</mat-icon><span class="nav-caption large">My Courses</span>
+       </a>
+       <a *ngIf="userActive == 'yes'"  mat-button routerLink="/exams" routerLinkActive="active">
+       <mat-icon>assignment</mat-icon><span class="nav-caption large">my Exams</span>
+       </a>
+     </div>
+    <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+        <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+          <li *ngIf="userIsAuthenticated && userRole !='teacher' && userActive == 'yes'" class="nav-item">
+            <a  mat-button routerLink="/courses" routerLinkActive="active">Admission</a>
+          </li>
+         <mat-divider></mat-divider>
+            <li *ngIf="!userIsAuthenticated" >
+                 <a  mat-button routerLink="login" routerLinkActive="active">Log in</a>
+            </li>
+            <li *ngIf="!userIsAuthenticated" >
+                 <a  mat-button mat-raised-button color='accent' routerLink="signup" routerLinkActive="active">Register</a>
+            </li>
+            <li *ngIf="userIsAuthenticated" >
+                <a (click)="onLogout()" mat-button  >Logout</a>
+            </li>
+        </ul>
+    </div>
+  </mat-toolbar>
