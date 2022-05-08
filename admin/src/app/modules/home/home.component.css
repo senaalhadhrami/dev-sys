@@ -1,0 +1,27 @@
+section div p{
+  color: #911951;
+  font-size: 30px;
+  margin: 30px 0;
+}
+section div + p{
+  color: #aa1d5f;
+  font-weight: bold;
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+mat-tab-group {
+  text-align: center;
+}
+
+mat-tab-group p {
+  padding-top: 20px;
+}
+table {
+  width: 100%;
+  text-align: left;
+}
+
+
+.mat-badge {
+    position: absolute;
+}

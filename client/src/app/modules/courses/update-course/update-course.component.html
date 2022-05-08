@@ -1,0 +1,66 @@
+<div class="container">
+  <mat-toolbar>
+    <span class="fill-remaining-space"></span>
+    <span>Update course</span>
+    <span class="fill-remaining-space"></span>
+    <button mat-button class="close-icon" [mat-dialog-close]="true">
+      <mat-icon>close</mat-icon>
+  </button>
+  </mat-toolbar>
+</div>
+<div *ngIf="updating">please wait while we update record.</div>
+<form *ngIf="!updating" (ngSubmit)="onSubmit()">
+  <div class="container">
+    <div class="center-div">
+      <mat-grid-list cols="1" rowHeight="500px">
+        <mat-grid-tile>
+          <div class="controles-container">
+            <div [hidden]="submitted" style="width: 400px;">
+               <div class="form-group">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Course Code</mat-label>
+                  <input matInput id="code" required [(ngModel)]="course.code" name="code">
+                </mat-form-field>
+              </div>
+
+              <div class="form-group">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Credits</mat-label>
+                  <input matInput id="credits" required [(ngModel)]="course.credits" name="credits">
+                </mat-form-field>
+              </div>
+
+              <div class="form-group">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Course Title</mat-label>
+                  <input matInput id="name" required [(ngModel)]="course.name" name="name">
+                </mat-form-field>
+              </div>
+
+              <div class="form-group">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Seats</mat-label>
+                  <input matInput id="seats" required [(ngModel)]="course.seats" name="seats">
+                </mat-form-field>
+              </div>
+
+              <div class="form-group">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Department</mat-label>
+                  <input matInput id="department" disabled  [(ngModel)]="course.department" name="department" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </div>
+
+
+            </div>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <div class="button-row">
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+        <button mat-raised-button color="warn" type="reset">Clear</button>
+      </div>
+    </div>
+
+  </div>
+</form>

@@ -1,0 +1,15 @@
+System Workflows
+
+[client panel]
+- user register to system (not activated) as student by default
+- teacher add courses (nto activated)
+- student register/drop courses from admission page
+- teacher create/delete exams for courses
+
+[admin panel]
+- admin activate new users
+- admin activate/delete new courses
+
+[notifications]
+all users recieve notification of any new registrations and updates
+

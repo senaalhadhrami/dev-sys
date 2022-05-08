@@ -1,0 +1,80 @@
+<div class="container">
+  <mat-toolbar>
+    <span class="fill-remaining-space"></span>
+    <span>Add new course</span>
+    <span class="fill-remaining-space"></span>
+    <button mat-button class="close-icon" >
+      <mat-icon routerLink="/mycourses">close</mat-icon>
+    </button>
+  </mat-toolbar>
+</div>
+<div *ngIf="creating">please wait while we add record.</div>
+<form *ngIf="!creating" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div class="container">
+
+    <mat-grid-list cols="2" rowHeight="500px" >
+      <mat-grid-tile>
+        <div class="controles-container">
+          <div [hidden]="submitted" style="width: auto;">
+            <div class="form-group">
+              <mat-form-field class="example-full-width">
+                <mat-label>Course Code</mat-label>
+                <input matInput formControlName="code" class="form-control" id="code" required
+                  [(ngModel)]="course.code" name="code">
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <mat-form-field class="example-full-width">
+                <mat-label>Credits</mat-label>
+                <input matInput id="credits" type="number" placeholder="Credit Hours" formControlName="credits" required [(ngModel)]="course.credits" name="credits">
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <mat-form-field class="example-full-width">
+                <mat-label>Course Title</mat-label>
+                <input matInput formControlName="name" class="form-control" id="name" required
+                  [(ngModel)]="course.name" name="name">
+              </mat-form-field>
+            </div>
+
+            <div class="form-group">
+              <mat-form-field class="example-full-width">
+                <mat-label>Seats</mat-label>
+                <input matInput id="seats" type="number" placeholder="maximum students" formControlName="seats" required [(ngModel)]="course.seats" name="seats">
+              </mat-form-field>
+            </div>
+          <div class="form-group" >
+            <mat-form-field appearance="fill" >
+             <mat-label>Department</mat-label>
+              <mat-select  [(ngModel)]="course.department" name="department" [ngModelOptions]="{standalone: true}">
+                <mat-option *ngFor="let department of departments" [value]="department.name" >
+                  {{department.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          </div>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="controles-container-second">
+
+          <div class="add-bottom-margin">
+            <mat-form-field>
+              <input matInput [(ngModel)]="course.begins" formControlName="begins" [matDatepicker]="picker"
+                name="begins" placeholder="Starting Date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+          </div>
+
+          <div class="button-row">
+            <button mat-raised-button [disabled]="!registerForm.valid" color="primary" type="submit">Submit</button>
+            <button mat-raised-button color="warn" type="reset">Clear</button>
+          </div>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</form>

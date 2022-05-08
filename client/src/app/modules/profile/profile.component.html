@@ -1,0 +1,15 @@
+<div class="main-div">
+    <mat-card class="card">
+    <mat-spinner diameter="40" color="accent" *ngIf="profile == null"></mat-spinner>
+        <mat-card-header *ngIf="profile !=null" >
+            <div mat-card-avatar>
+                <img src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" class="header-image">
+            </div>
+            <mat-card-title>{{profile.lastName}},{{profile.name}}</mat-card-title>
+            <mat-card-subtitle>{{profile.email}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content *ngIf="profile !=null" >
+            <p>Username: {{profile.email}}</p>
+        </mat-card-content>
+    </mat-card>
+</div>

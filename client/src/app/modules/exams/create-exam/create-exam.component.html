@@ -1,0 +1,75 @@
+<div class="container">
+  <mat-toolbar>
+    <span class="fill-remaining-space"></span>
+    <span>Add new exam</span>
+    <span class="fill-remaining-space"></span>
+    <button mat-button class="close-icon">
+       <mat-icon routerLink="/exams">close</mat-icon>
+    </button>
+  </mat-toolbar>
+</div>
+<div *ngIf="creating">please wait while we add record.</div>
+<form *ngIf="!creating"  [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div class="container">
+
+    <mat-grid-list cols="2" rowHeight="500px">
+      <mat-grid-tile>
+        <div class="controles-container">
+          <div [hidden]="submitted" style="width: 400px;">
+
+            <div class="form-group">
+              <mat-form-field class="example-full-width">
+                <mat-label>Exam Description</mat-label>
+                <input matInput formControlName="description" class="form-control" id="description" required
+                  [(ngModel)]="exam.description" name="description">
+              </mat-form-field>
+            </div>
+
+          <div class="form-group" >
+            <mat-form-field appearance="fill" >
+             <mat-label>Course</mat-label>
+              <mat-select  [(ngModel)]="exam.course" name="course" [ngModelOptions]="{standalone: true}" >
+                <mat-option *ngFor="let course of courses" [value]="course._id" >
+                  {{course.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+            <div class="form-group">
+              <mat-form-field class="example-full-width">
+                <mat-label>Seats</mat-label>
+                <input matInput id="seats" type="number" placeholder="maximum students" formControlName="seats" required [(ngModel)]="exam.seats" name="seats">
+              </mat-form-field>
+            </div>
+
+          </div>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="controles-container-second">
+
+           <div class="add-bottom-margin">
+            <mat-form-field>
+              <input matInput [(ngModel)]="exam.begins" formControlName="begins" [matDatepicker]="picker"
+                name="begins" placeholder="Starting Date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+           <div class="form-group">
+              <mat-form-field class="example-full-width">
+                <mat-label>Duration</mat-label>
+                <input matInput id="duration" type="number" placeholder="exam duration in Hours" formControlName="duration" required [(ngModel)]="exam.duration" name="duration">
+              </mat-form-field>
+            </div>
+
+          <div class="button-row">
+            <button mat-raised-button [disabled]="!registerForm.valid" color="primary" type="submit">Submit</button>
+            <button mat-raised-button color="warn" type="reset">Clear</button>
+          </div>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</form>

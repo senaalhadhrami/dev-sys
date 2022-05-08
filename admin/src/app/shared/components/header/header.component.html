@@ -1,0 +1,32 @@
+<mat-toolbar color="warn">
+    <div fxHide.gt-xs>
+        <button mat-icon-button (click)="onToggleSidenav()">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </div>
+    <div>
+        <a routerLink="/">Fake Neptun (Administration) </a>
+    </div>
+     <div *ngIf="userIsAuthenticated"  fxFlex fxLayout fxLayoutAlign="center" fxHide.xs>
+       <a *ngIf="userActive == 'yes'"  mat-button routerLink="/profile" routerLinkActive="active">
+       <mat-icon>face</mat-icon><span class="nav-caption large"> Profile</span>
+       </a>
+       <a *ngIf="userActive == 'yes'"  mat-button routerLink="/courses" routerLinkActive="active">
+       <mat-icon>subject</mat-icon><span class="nav-caption large">New Courses</span>
+       </a>
+         <a *ngIf="userActive == 'yes'"  mat-button routerLink="/users" routerLinkActive="active">
+       <mat-icon>supervised_user_circle</mat-icon><span class="nav-caption large">New Users</span>
+       </a>
+     </div>
+    <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+        <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+         <mat-divider></mat-divider>
+            <li *ngIf="!userIsAuthenticated" >
+                 <a  mat-button routerLink="login" routerLinkActive="active">Log in</a>
+            </li>
+            <li *ngIf="userIsAuthenticated" >
+                <a (click)="onLogout()" mat-button  >Logout</a>
+            </li>
+        </ul>
+    </div>
+  </mat-toolbar>

@@ -1,0 +1,18 @@
+<h2>Exam Details</h2>
+
+<hr/>
+<div *ngIf="exam">
+  <div>
+    <label><b>Description: </b></label> {{exam.description}}
+  </div>
+  <div>
+    <label><b>Seats: </b></label> {{exam.seats}}
+  </div>
+  <div>
+    <label><b>Author: </b></label> {{exam.author}}
+  </div>
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to Exams List</button><br>
